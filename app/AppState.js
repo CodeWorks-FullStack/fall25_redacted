@@ -24,6 +24,9 @@ class ObservableAppState extends EventEmitter {
     }),
   ]
 
+  /** @type {CaseFile} */
+  activeCaseFile = null
+
 }
 
 export const AppState = createObservableProxy(new ObservableAppState())

@@ -12,7 +12,7 @@
   <title>redacted</title>
 </head>
 
-<body data-bs-theme="light">
+<body data-bs-theme="light" class="bg-light">
   <header>
     <nav class="navbar bg-codeworks text-light gap-2 px-2">
       <img src="./assets/img/logo.png" height="45" alt="" loading="lazy">
@@ -23,19 +23,19 @@
   </header>
 
   <main class="container-fluid">
-    <section class="row">
+    <section class="row mt-3">
       <!-- MAIN ACTIVE CASEFILE -->
-      <div class="col-sm-9">
+      <div class="col-sm-9" id="active-case-file">
         active thing goes here
       </div>
 
       <!-- SIDE BAR CASE FILE LIST -->
       <div data-bs-theme="dark" class="col-sm-3">
 
-        <form onsubmit="app.caseFilesController.createCaseFile()" class="row card my-3 py-2">
+        <form onsubmit="app.caseFilesController.createCaseFile()" class="row card mb-3 py-2">
           <div>Create Case File</div>
-          <div class="mb-2 col-12 px- input-group">
-            <!-- NOTE the "name" attribute is VERY important on the form, it instructs how the form will call those inputs in the javascript,
+          <div class="mb-2 col-12  input-group">
+            <!-- NOTE the "name" attribute is VERY important on the inputs of the form, it instructs how the form will call those inputs in the javascript,
             you want them to ideally match with properties on you model -->
             <select required name="agency" id="case-file-agency" class="form-control w-75">
               <option value="" disabled selected>Please Select...</option>

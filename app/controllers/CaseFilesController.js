@@ -8,7 +8,11 @@ export class CaseFilesController {
   constructor() {
     console.log('📁🕵️🎮');
     this.drawCaseFilesList()
+    this.drawActiveCaseFile()
     AppState.on('caseFiles', this.drawCaseFilesList)
+    AppState.on('activeCaseFile', this.drawActiveCaseFile)
+    // load data from local
+    caseFilesService.loadCaseFilesFromLocal()
   }
 
   drawCaseFilesList() {
@@ -18,6 +22,21 @@ export class CaseFilesController {
       // caseFileListElement.innerHTML += `<p>${caseFile.body}</p>` // start small
       caseFileListElement.innerHTML += caseFile.listCardTemplate
     })
+  }
+
+  drawActiveCaseFile() {
+    const activeCaseFileElement = document.getElementById('active-case-file')
+    const activeCaseFile = AppState.activeCaseFile
+    if (activeCaseFile != null) {
+      // activeCaseFileElement.innerHTML = activeCaseFile.body // start small
+      activeCaseFileElement.innerHTML = activeCaseFile.activeCaseFileTemplate
+    } else {
+      activeCaseFileElement.innerHTML = `
+      <div class="card text-secondary p-4">
+        <h2>Please Select a CaseFile to get Started</h2>
+      </div>
+      `
+    }
   }
 
   createCaseFile() {
@@ -36,6 +55,26 @@ export class CaseFilesController {
     console.log('📝', caseFileData) // ‼️Very important to look ad this console log after getting the form data and VERIFY it looks good before moving on
 
     caseFilesService.createCaseFile(caseFileData)
+    // @ts-ignore
+    form.reset() // clears out the forms inputs, so you can start fresh
+  }
 
+  selectActiveCaseFile(caseFileId) {
+    console.log('👉🕵️📁', caseFileId);
+    caseFilesService.selectActiveCaseFile(caseFileId)
+  }
+
+  saveActiveCaseFile() {
+    console.log('💾📁🕵️');
+    event.preventDefault()
+    let form = event.target
+    console.log('💾🎯', form);
+    let formData = getFormData(form)
+    console.log('💾📝', formData)
+    caseFilesService.saveTheActiveCaseFile(formData)
+  }
+
+  redactActiveCaseFile() {
+    caseFilesService.redactActiveCaseFile()
   }
 }
