@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="./assets/img/logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="assets/style/main.css">
+  <link rel="stylesheet" href="assets/style/style.css">
+  <title>redacted</title>
+</head>
+
+<body data-bs-theme="light">
+  <header>
+    <nav class="navbar bg-codeworks text-light gap-2 px-2">
+      <img src="./assets/img/logo.png" height="45" alt="" loading="lazy">
+      <div><b>redacted</b></div>
+      <div class="ms-auto" id="authstate"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-fluid">
+    <section class="row">
+      <!-- MAIN ACTIVE CASEFILE -->
+      <div class="col-sm-9">
+        active thing goes here
+      </div>
+
+      <!-- SIDE BAR CASE FILE LIST -->
+      <div data-bs-theme="dark" class="col-sm-3">
+
+        <form onsubmit="app.caseFilesController.createCaseFile()" class="row card my-3 py-2">
+          <div>Create Case File</div>
+          <div class="mb-2 col-12 px- input-group">
+            <!-- NOTE the "name" attribute is VERY important on the form, it instructs how the form will call those inputs in the javascript,
+            you want them to ideally match with properties on you model -->
+            <select required name="agency" id="case-file-agency" class="form-control w-75">
+              <option value="" disabled selected>Please Select...</option>
+              <option value="NFS🙊">National Forest Service 🙊</option>
+              <option value="SPC👽">Space Force 👽</option>
+              <option value="USPS📨">United States Postal Service 📨</option>
+              <option value="RAT🐀">Regional Animal Testing (Unit) 🐀</option>
+              <option value="CCP🏛️">Community College of Philadelphia 🏛️</option>
+              <option value="WET-SOX🐋">Water Exploration Taskforce for Sea and Ocean Exploration</option>
+            </select>
+            <input required name="reportedDate" type="date" id="case-file-reported-date" class="form-control w-25">
+          </div>
+          <div>
+            <button class="btn btn-teal w-100">
+              Create
+              <i class="mdi mdi-file-document-plus"></i>
+            </button>
+          </div>
+        </form>
+
+        <section id="case-file-list" class="row">
+
+        </section>
+
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="text-bg-dark">
+    <div class="text-center">
+      <p class="mb-0"><small>Made with <i class="mdi mdi-heart text-pink"></i> by CodeWorks</small></p>
+    </div>
+  </footer>
+
+  <!-- SECTION links for bootstrap, axios, and auth -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.22/auth0-spa-js.production.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0provider-client/browser/Auth0Provider.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- !SECTION -->
+  <!-- The start of our javascript -->
+  <script src="app/App.js" type="module"></script>
+
+</body>
+
+</html>
