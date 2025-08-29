@@ -74,7 +74,9 @@ export class CaseFilesController {
     caseFilesService.saveTheActiveCaseFile(formData)
   }
 
+
   redactActiveCaseFile() {
+    console.log('⬛⬛📁🕵️');
     caseFilesService.redactActiveCaseFile()
   }
 }

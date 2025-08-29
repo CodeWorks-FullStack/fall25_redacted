@@ -97,7 +97,7 @@ const redactedWordList = [
   'involvement',
   'media',
   'attention',
-  'McDonald',
+  'mcdonald',
   'unresolved'
 ]
 
